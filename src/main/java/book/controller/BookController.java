@@ -1,6 +1,6 @@
 package book.controller;
 import book.dao.BookDao;
-import book.entity.Book;
+import book.entity.Title;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,11 +30,11 @@ public class BookController {
         response.put("data",null);
         response.put("error",null);
 
-        List<Book> bookList=bookDao.getBookByIsbn(isbn);
+        List<Title> bookList=bookDao.getBookByIsbn(isbn);
 
         if(bookList.size()==0){
             Map<String,Object> errorMessage=new HashMap<>();
-            errorMessage.put("message","No Book Found By This ISBN");
+            errorMessage.put("message","No Title Found By This ISBN");
             response.put("error",errorMessage);
             return response;
             }

@@ -1,11 +1,15 @@
 package book.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class Book {
-   public int ISBN;
-   public String book_Title;
+public class Title {
+    @Id
+    public int ISBN;
+
+    public String book_Title;
 
     public int edition_Number;
 

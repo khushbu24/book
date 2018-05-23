@@ -1,7 +1,7 @@
 package book.dao;
 
 
-import book.entity.Book;
+import book.entity.Title;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,21 +15,21 @@ public class BookDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Book> getBookByIsbn(Integer isbn){
-        String  hql="From Book where ISBN=?";
+    public List<Title> getBookByIsbn(Integer isbn){
+        String  hql="From Title where ISBN=?";
         return entityManager.createQuery(hql).setParameter(1,isbn).getResultList();
     }
 
-    public List<Book> getBookByBookTitle(String book_Title){
-        String  hql="From Book where book_Title=?";
+    public List<Title> getBookByBookTitle(String book_Title){
+        String  hql="From Title where book_Title=?";
         return entityManager.createQuery(hql).setParameter(1,book_Title).getResultList();
     }
-    public List<Book> getBookByedition_Number(String edition_Number){
-        String  hql="From Book where book_Title=?";
+    public List<Title> getBookByedition_Number(String edition_Number){
+        String  hql="From Title where book_Title=?";
         return entityManager.createQuery(hql).setParameter(1,edition_Number).getResultList();
     }
-    public List<Book> getBookBycopy_right(String copy_right){
-        String  hql="From Book where book_Title=?";
+    public List<Title> getBookBycopy_right(String copy_right){
+        String  hql="From Title where book_Title=?";
         return entityManager.createQuery(hql).setParameter(1,copy_right).getResultList();
     }
 }
