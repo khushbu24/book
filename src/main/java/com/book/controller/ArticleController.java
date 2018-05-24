@@ -1,7 +1,9 @@
 package com.book.controller;
 
 import com.book.dao.ArticleDao;
+import com.book.dao.CommentDao;
 import com.book.entity.Article;
+import com.book.entity.Comment;
 import com.book.request.CreateArticle;
 import com.book.response.GenericResponse;
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -23,9 +25,11 @@ import java.util.Map;
 @Component
 public class ArticleController {
 
+    //@Autowired
+    //private ArticleDao articleDao;
     @Autowired
-    private ArticleDao articleDao;
-
+    private CommentDao commentDao;
+/*
     @GetMapping(path = "/find")
 
     @ResponseBody
@@ -153,6 +157,25 @@ public class ArticleController {
         return new ResponseEntity<>(new GenericResponse<Object, Object>(null, "could not create"), HttpStatus.NO_CONTENT);
 
 
+    }
+
+*/
+    @GetMapping(path = "/comment")
+
+    @ResponseBody
+    public ResponseEntity<GenericResponse> getCommentById(@RequestParam("id") Long id) {
+        System.out.println("request received id : " + id);
+
+        Comment a = commentDao.findOne(id);
+        //System.out.println(a.toString());
+        //System.out.println("responding");
+        if (a != null) {
+            return new ResponseEntity<>(new GenericResponse<Comment, Object>(a, null), HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>(new GenericResponse<Comment, Object>(null, "no error"), HttpStatus.NOT_FOUND);
+
+        }
     }
 
 
