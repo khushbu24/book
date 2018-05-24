@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Transactional
@@ -43,8 +44,8 @@ public class ArticleDao implements CrudRepository<Article, Long> {
     }
 
     @Override
-    public Iterable<Article> findAll() {
-        return null;
+    public List<Article> findAll() {
+        return (List<Article>) crudRepository.findAll();
     }
 
     @Override
