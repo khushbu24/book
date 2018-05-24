@@ -10,3 +10,17 @@ public class GenericResponse<T,U> {
         this.error = error;
     }
 }
+
+
+//class Name {
+//
+//    String name;
+//    Integer age;
+//
+//}
+//
+//{
+//    "name":"a",
+//        "age":20
+//        }
+

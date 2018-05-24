@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -17,6 +19,9 @@ public class ArticleDao implements CrudRepository<Article, Long> {
     //private IArticleDao iArticleDao;
     private CrudRepository crudRepository;
 
+    //@PersistenceContext
+    //private EntityManager entityManager;
+
     @Override
     public Article save(Article entity) {
 
@@ -24,9 +29,20 @@ public class ArticleDao implements CrudRepository<Article, Long> {
 
     }
 
+    public Article update(Article entity) {
+//        Article a = findArticleByTitle(entity.getTitle());
+//        delete(a);
+        return (Article) crudRepository.save(entity);
+
+    }
+
     public Article findArticleById(long id) {
         return (Article) crudRepository.findOne(id);
     }
+//
+//    public Article findArticleByTitle(String title) {
+//        return (Article) entityManager.createNativeQuery("select  * from Article where title =  ?").setParameter(1, title);
+//    }
 
     @Override
     public <S extends Article> Iterable<S> save(Iterable<S> entities) {
@@ -65,7 +81,8 @@ public class ArticleDao implements CrudRepository<Article, Long> {
 
     @Override
     public void delete(Article entity) {
-
+        crudRepository.delete(entity.getArticleId());
+        //delete(entity);
     }
 
     @Override
