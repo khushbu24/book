@@ -1,6 +1,6 @@
-package book.controller;
-import book.dao.BookDao;
-import book.entity.Title;
+package com.book.controller;
+import com.book.dao.BookDao;
+import com.book.entity.Title;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;

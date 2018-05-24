@@ -1,4 +1,4 @@
-package book.entity;
+package com.book.entity;
 
 import jdk.jfr.Enabled;
 
@@ -6,11 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="title_author_map")
+//@Entity
+//@Table(name="title_author_map")
 public class Title_Author_Map {
 
-    @OneToMany
+    //@OneToMany
     private int author_id;
 
     public int ISBN;

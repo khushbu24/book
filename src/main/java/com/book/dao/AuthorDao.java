@@ -1,7 +1,6 @@
-package book.dao;
+package com.book.dao;
 
-import book.entity.Author;
-import book.entity.Title;
+import com.book.entity.Author;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
