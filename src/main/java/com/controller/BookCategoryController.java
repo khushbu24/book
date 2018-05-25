@@ -26,4 +26,13 @@ public class BookCategoryController {
         return bC.toString();
     }
 
+
+    @RequestMapping(value = "/name")
+    @ResponseBody
+    public String getAllBookCategoriesByName() {
+        //find all book categories from DB
+        List<BookCategory> bC = bookCategoryDao.findByName("Math");
+        System.out.println(bC);
+        return bC.toString();
+    }
 }

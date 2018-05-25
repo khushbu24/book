@@ -20,7 +20,7 @@ public class BookCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
