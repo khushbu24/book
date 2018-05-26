@@ -2,9 +2,13 @@ package com.controller;
 
 import com.dao.BookCategoryDao;
 import com.entity.BookCategory;
+import com.service.BookCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.lang.reflect.Method;
@@ -15,24 +19,22 @@ import java.util.List;
 public class BookCategoryController {
 
     @Autowired
-    private BookCategoryDao bookCategoryDao;
+    private BookCategoryService bookCategoryService;
 
     @RequestMapping(value = "/all")
     @ResponseBody
-    public String getAllBookCategories() {
-        //find all book categories from DB
-        List<BookCategory> bC = bookCategoryDao.findAll();
-        System.out.println(bC);
-        return bC.toString();
-    }
+    public ResponseEntity getAllBookCategories() {
+        String response=bookCategoryService.getAllBookCategories();
+        return new ResponseEntity(response,HttpStatus.OK);
 
+    }
 
     @RequestMapping(value = "/name")
     @ResponseBody
-    public String getAllBookCategoriesByName() {
-        //find all book categories from DB
-        List<BookCategory> bC = bookCategoryDao.findByName("Math");
-        System.out.println(bC);
-        return bC.toString();
+    public ResponseEntity getAllBookCategoriesByName(@RequestParam("name") String name) {
+
+        String response = bookCategoryService.getAllBookCategoriesByName(name);
+       return new ResponseEntity(response,HttpStatus.OK);
+
     }
 }
